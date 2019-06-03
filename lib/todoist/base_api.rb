@@ -8,11 +8,12 @@ class Todoist::BaseApi
   end
 
   def call
-    @response = HTTParty.post(todoist_api_base, body: {
-      token: token,
-      sync_token: sync_token,
-      resource_types: resource_types
-    })
+    @response = HTTParty.post(
+      todoist_api_base,
+      body: { token: token,
+              sync_token: sync_token,
+              resource_types: resource_types }
+    )
   end
 
   private
@@ -26,6 +27,6 @@ class Todoist::BaseApi
   end
 
   def resource_types
-    fail Exceptions::NotImplemented
+    raise Exceptions::NotImplemented
   end
 end
