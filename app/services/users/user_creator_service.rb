@@ -7,7 +7,7 @@ module Users
     end
 
     def call
-      todoist_user_info = Todoist::UserInfo.new(access_token: access_token)
+      todoist_user_info = Todoist::UserInfoApi.new(access_token: access_token)
       todoist_user_info_response = todoist_user_info.call
 
       user = User.new
