@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_02_024714) do
+ActiveRecord::Schema.define(version: 2019_06_03_225018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,9 @@ ActiveRecord::Schema.define(version: 2019_06_02_024714) do
     t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "sync_token"
     t.index ["email"], name: "index_users_on_email"
     t.index ["todoist_id"], name: "index_users_on_todoist_id"
   end
+
 end

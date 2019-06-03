@@ -1,4 +1,4 @@
-class Todoist::UserInfoApi < Todoist::BaseApi
+class Todoist::UserInfoApi < Todoist::BaseSyncApi
   def call
     super
     response['user']
