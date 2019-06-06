@@ -2,7 +2,7 @@ class Todoist::BaseSyncApi
   attr_reader   :todoist_sync_api_base, :access_token
   attr_accessor :response
 
-  def initialize(access_token: nil)
+  def initialize(*)
     @todoist_sync_api_base = ENV['TODOIST_SYNC_API_BASE']
     @access_token = access_token
   end

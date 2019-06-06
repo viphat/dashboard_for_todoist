@@ -8,10 +8,6 @@ class Todoist::ActiveTasksApi < Todoist::BaseRestApi
 
   private
 
-  def pagination?
-    false
-  end
-
   def resource_url
     'tasks'
   end
