@@ -7,7 +7,6 @@ module Projects
       @todoist_project_id = todoist_project_id
     end
 
-    # 106069425
     def call
       super
     end

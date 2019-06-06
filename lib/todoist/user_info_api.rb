@@ -1,7 +1,7 @@
 class Todoist::UserInfoApi < Todoist::BaseSyncApi
   def call
     super
-    response['user']
+    Todoist::Models::User.new(response['user'])
   end
 
   def token
