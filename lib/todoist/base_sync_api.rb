@@ -1,10 +1,10 @@
-class Todoist::BaseSyncApi
-  attr_reader   :todoist_sync_api_base, :access_token
+class Todoist::BaseSyncApi < Todoist::Base
+  attr_reader   :todoist_sync_api_base
   attr_accessor :response
 
-  def initialize(*)
+  def initialize(access_token:)
+    super(access_token: access_token)
     @todoist_sync_api_base = ENV['TODOIST_SYNC_API_BASE']
-    @access_token = access_token
   end
 
   def call(*)
@@ -17,13 +17,9 @@ class Todoist::BaseSyncApi
   private
 
   def params
-    { token: token,
+    { token: access_token,
       sync_token: sync_token,
       resource_types: resource_types }
-  end
-
-  def token
-    access_token || ENV['TODOIST_TEST_ACCESS_TOKEN']
   end
 
   def sync_token
@@ -31,6 +27,6 @@ class Todoist::BaseSyncApi
   end
 
   def resource_types
-    raise Exceptions::NotImplemented
+    raise Todoist::Exceptions::MethodNotImplemented
   end
 end

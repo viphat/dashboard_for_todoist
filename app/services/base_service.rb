@@ -8,7 +8,7 @@ class BaseService
 
   def initialize(user: nil, access_token: nil)
     @user = user
-    @access_token = user&.todoist_access_token || access_token
+    @access_token = user&.todoist_access_token || access_token || ENV['TODOIST_TEST_ACCESS_TOKEN']
   end
 
   def call
@@ -18,6 +18,6 @@ class BaseService
   private
 
   def check_access_token!
-    raise Exceptions::AccessTokenRequired if access_token.blank?
+    raise Todoist::Exceptions::AccessTokenRequired if access_token.blank?
   end
 end

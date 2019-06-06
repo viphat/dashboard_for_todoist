@@ -16,23 +16,22 @@ ActiveRecord::Schema.define(version: 2019_06_06_024327) do
   enable_extension "plpgsql"
 
   create_table "projects", force: :cascade do |t|
-    t.integer "todoist_id", null: false
+    t.string "todoist_id", null: false
     t.string "name", null: false
     t.integer "color", null: false
     t.boolean "is_deleted", default: false, null: false
-    t.integer "parent_id"
     t.integer "user_id", null: false
+    t.string "todoist_parent_id"
     t.string "ancestry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["ancestry"], name: "index_projects_on_ancestry"
-    t.index ["parent_id"], name: "index_projects_on_parent_id"
     t.index ["todoist_id"], name: "index_projects_on_todoist_id"
+    t.index ["todoist_parent_id"], name: "index_projects_on_todoist_parent_id"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer "todoist_id", null: false
+    t.string "todoist_id", null: false
     t.string "todoist_access_token", null: false
     t.string "email", null: false
     t.string "full_name", null: false
